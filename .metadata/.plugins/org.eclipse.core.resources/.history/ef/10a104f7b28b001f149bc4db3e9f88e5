@@ -1,0 +1,223 @@
+@charset "UTF-8";
+/* css for publish results */
+.btn-danger {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-card {
+    margin-top: 50px;
+}
+
+.form-card .card-header {
+    background-color: #4a12a5;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #4a12a5;
+}
+
+.form-control:focus {
+    border-color: #4a12a5;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+}
+.navbar {
+    margin: 10px 10px 10px;
+    border-radius: 25px;
+    background: #4a12a5;
+    box-shadow: 5px;
+    border-bottom: none;
+ }
+ 
+ .navbar-nav .nav-item {
+    font-size: 1rem;
+    font-family: Roboto Condensed;
+    font-weight: 700;
+    margin-right: 20px;
+ }
+ 
+ .navbar-brand {
+    margin: 15px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+ }
+ 
+ .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+    position: relative;
+    padding-bottom: 5px;
+ }
+ 
+ .navbar-nav .nav-link:hover {
+    text-decoration: none;
+ }
+ 
+ .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+ }
+ 
+ .navbar-nav .nav-link:hover::before {
+    visibility: visible;
+    width: 100%;
+ }
+ 
+ .btn-outline-primary {
+    border: 2px;
+    border-radius: 50px;
+    text-align: center;
+    font-family: Roboto Condensed;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    border-color: rgb(255, 255, 255);
+ }
+ 
+ .btn-outline-primary:hover {
+    background-color: rgb(16, 16, 16);
+    color: #ffffff;
+    transition: 0.3s;
+ }
+
+ /* Custom CSS styles for View Exam Results */
+
+/* Table and buttons */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 2px solid #4a12a5;
+    font-family: 'Roboto',sans-serif;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    order: 2px solid #4a12a5
+}
+th{
+    background-color: #4a12a5;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9; 
+    cursor: pointer;
+}
+
+#searchInput {
+    margin-bottom: 10px;
+    background-color: #ece9f0;
+}
+
+.btn-secondary, .btn-primary, .btn-warning, .btn-danger {
+    margin-right: 10px;
+    background-color: #4a12a5;
+}
+
+
+/* Modal-specific styling */
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 2.5rem; 
+    color: #fdfdff; 
+    text-align: center;
+    margin-bottom: 20px; 
+    padding: 10px;
+    background-color: #4a12a5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    font-weight: bold; 
+}
+/* Action buttons inside table */
+td button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    color: white;
+    background-color: #28a745; /* Green color for action buttons */
+    transition: background-color 0.3s ease;
+}
+
+td button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Custom styles for the search input */
+ #searchInput {
+    width: 300px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+} 
+
+ /* Make table responsive on small screens */
+@media (max-width: 768px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+} 

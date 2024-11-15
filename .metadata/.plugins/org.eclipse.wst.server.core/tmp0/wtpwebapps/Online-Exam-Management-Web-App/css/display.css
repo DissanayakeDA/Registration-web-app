@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container for the Dashboard */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures that borders are merged */
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0; /* Light grey horizontal lines */
+}
+
+th {
+    background-color: #007BFF; /* Blue background for the header */
+    color: white;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f8ff; /* Light blue background for even rows */
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff; /* White background for odd rows */
+}
+
+tr:hover {
+    background-color: #d1ecf1; /* Light blue hover effect */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+/* Button Styles */
+button {
+    background-color: #007BFF; /* Blue button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s; /* Added transform for scaling effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Form Styles */
+form {
+    display: inline; /* Keep form elements inline */
+}
+
+/* Title Styles */
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Smaller font on mobile */
+    }
+
+    th, td {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+
+
+

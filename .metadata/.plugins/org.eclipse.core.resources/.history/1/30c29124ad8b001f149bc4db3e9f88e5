@@ -1,0 +1,43 @@
+//updateProfileServlet
+
+package Registration;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/updateProfileServlet")
+public class updateProfileServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Get parameters from the form
+        String student_Id = request.getParameter("student_Id");
+        String stName = request.getParameter("stName");
+        String stEmail = request.getParameter("stEmail");
+        String mobileNumber = request.getParameter("mobileNumber");
+        String password = request.getParameter("password");
+
+        // Print values for debugging
+        System.out.println("ID: " + student_Id + ", Name: " + stName + ", Email: " + stEmail + ", Mobile: " + mobileNumber + ", Password: " + password);
+
+        // Call the method to update the student in the database
+        boolean isUpdated = RegistrationControl.updateStudentDetails(student_Id, stName, stEmail, mobileNumber, password);
+
+        // Handle response based on success or failure
+        if (isUpdated) {
+            String alertMessage = "Profile updated successfully!";
+            response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href = 'login.jsp';</script>");
+        } else {
+            String alertMessage = "Failed to update profile!";
+            response.getWriter().println("<script>alert('" + alertMessage + "'); window.location.href = 'studentprofile.jsp';</script>");
+        }
+        
+        
+    }
+}

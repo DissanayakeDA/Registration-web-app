@@ -1,0 +1,565 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #4a12a5;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #999;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+/*.brand,
+.title {
+  margin-left: 20px;
+}*/
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  /*.user {
+    min-width: 40px;
+  }*/
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.user {
+  position: relative;
+  margin-right: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3.5rem;
+  color: var(--black2);
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+
+  .main {
+    width: 100%;
+    left: 0;
+  }
+
+  .main.active {
+    left: 300px;
+  }
+
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search {
+    width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+
+  .navigation.active {
+    left: 0;
+  }
+
+  .main {
+    width: 100%;
+    left: 0;
+  }
+
+  .cardBox {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+
+  .toggle {
+    font-size: 2rem;
+  }
+
+  .cardBox .card {
+    padding: 20px;
+  }
+
+  .cardBox .card .numbers {
+    font-size: 1.8rem;
+  }
+
+  .cardBox .card .cardName {
+    font-size: 1rem;
+  }
+}
+
+/*new*/
+
+.fullWidthCard {
+  margin: 5px;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  grid-column: span 4; /* Make the div span the full width */
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.fullWidthCard .content {
+  font-size: 1.5rem;
+  color: var(--black1);
+  text-align: center;
+}
+
+/* Add hover effect similar to cards */
+/*.fullWidthCard:hover,
+.content:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+*//* Container for the form */
+.form-container {
+  width: 100%;
+  max-width: 450px;
+  margin: 50px auto; /* Centers the form horizontally and adds top margin */
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the form container */
+  border-radius: 10px;
+}
+
+.form-container h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-container span {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Styling for the inputs */
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  padding-left: 35px; /* Padding for the icon */
+  position: relative;
+}
+
+/* Icons inside the form inputs */
+.form-container input::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'FontAwesome';
+  font-size: 16px;
+  color: #aaa;
+}
+
+/* Specific icons for each input */
+.form-container input[placeholder="Name"]::before {
+  content: "\f007"; /* FontAwesome user icon */
+}
+
+.form-container input[placeholder="Email"]::before {
+  content: "\f0e0"; /* FontAwesome envelope icon */
+}
+
+.form-container input[placeholder="Mobile Number"]::before {
+  content: "\f10b"; /* FontAwesome phone icon */
+}
+
+.form-container input[placeholder="Password"]::before {
+  content: "\f023"; /* FontAwesome lock icon */
+}
+
+.form-container input[placeholder="Confirm Password"]::before {
+  content: "\f023"; /* FontAwesome lock icon */
+}
+
+/* Button styling */
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4a12a5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #4a12a5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-container {
+    margin: 20px auto;
+    padding: 20px;
+  }
+}
+
+.home-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  color: #6a1b9a;
+}
+.profile {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 50px auto; /* Centers the form horizontally and adds top margin */
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the form container */
+  border-radius: 10px;
+}
+/* Table styling */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.custom-table th, .custom-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-table th {
+  background-color: var(--blue);
+  color: var(--white);
+  text-align: center; /* Center header text */
+}
+
+.custom-table td {
+  color: var(--black1);
+  text-align: left; /* Align body text to the left for better readability */
+}
+
+.custom-table tr:hover {
+  background-color: var(--gray); /* Hover effect for rows */
+}
+
+/* Responsive table for smaller screens */
+@media (max-width: 768px) {
+  .custom-table th, .custom-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+a{
+  text-decoration: none;
+  font-family:  "Ubuntu", sans-serif;
+  color: var(--black2)
+}
+a:hover{
+  color: #fff;
+}
+
+

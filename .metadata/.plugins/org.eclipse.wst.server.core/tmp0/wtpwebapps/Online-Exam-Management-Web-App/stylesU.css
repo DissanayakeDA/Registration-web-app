@@ -1,0 +1,66 @@
+ body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 125vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+    
+    h2{
+    	color: #4a12a5;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+
+  font-family: Roboto Condensed;
+    
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+      font-family: Roboto Condensed;
+    }
+
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    .button-35 {
+      background-color: white;
+      color: black;
+     
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      border-color: black;
+        font-family: Roboto Condensed;
+        font-weight : bold;
+      
+    }
+
+    .button-35:hover {
+      background-color: #4a12a5;
+      color: white;
+      border:none;
+      
+    }

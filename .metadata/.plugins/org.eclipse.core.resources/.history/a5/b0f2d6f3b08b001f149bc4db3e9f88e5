@@ -1,0 +1,116 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+<!-- Registration and Login -->
+     <servlet>
+     	<servlet-name>AddStudentServlet</servlet-name>
+     	<servlet-class>RegistrationPackage.AddStudentServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddStudentServlet</servlet-name>
+     	<url-pattern>/AddStudentServlet</url-pattern>
+     </servlet-mapping>
+     
+         <servlet>
+     	<servlet-name>GetAllStudentServlet</servlet-name>
+     	<servlet-class>RegistrationPackage.GetAllStudentServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>GetAllStudentServlet</servlet-name>
+     	<url-pattern>/GetAllStudentServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+     
+       <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>RegistrationPackage.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+      <servlet>
+        <servlet-name>updateProfileServlet</servlet-name>
+        <servlet-class>RegistrationPackage.updateProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>updateProfileServlet</servlet-name>
+        <url-pattern>/updateProfileServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+        <servlet-name>DeleteStudentServlet</servlet-name>
+        <servlet-class>RegistrationPackage.DeleteStudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteStudentServlet</servlet-name>
+        <url-pattern>/DeleteStudentServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+      <servlet>
+        <servlet-name>TeacherLoginServlet</servlet-name>
+        <servlet-class>TeacherLoginPackage.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherLoginServlet</servlet-name>
+        <url-pattern>/TeacherLoginServlet</url-pattern>
+    </servlet-mapping>
+   
+  <!-- Exam part -->
+    
+          <servlet>
+     	<servlet-name>ExamInsertServlet</servlet-name>
+     	<servlet-class>ExamPackage.ExamInsertServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>ExamInsertServlet</servlet-name>
+     	<url-pattern>/ExamInsertServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+     <servlet>
+     	<servlet-name>GetAllExamServlet</servlet-name>
+     	<servlet-class>ExamPackage.GetAllExamServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>GetAllExamServlet</servlet-name>
+     	<url-pattern>/GetAllExamServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+     <servlet>
+     	<servlet-name>ExamUpdateServlet</servlet-name>
+     	<servlet-class>ExamPackage.ExamUpdateServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>ExamUpdateServlet</servlet-name>
+     	<url-pattern>/ExamUpdateServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+     <servlet>
+     	<servlet-name>ExamDeleteServlet</servlet-name>
+     	<servlet-class>ExamPackage.ExamDeleteServlet</servlet-class>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>ExamDeleteServlet</servlet-name>
+     	<url-pattern>/ExamDeleteServlet</url-pattern>
+     </servlet-mapping>
+     
+     
+  
+  
+
+</web-app>

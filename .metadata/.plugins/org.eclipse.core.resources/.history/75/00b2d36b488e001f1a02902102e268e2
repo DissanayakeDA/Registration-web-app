@@ -1,0 +1,342 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Publish Exam Results</title>
+    <link rel ="icon" href="images/title.png" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Custom CSS (External file) -->
+   <!--  <link rel="stylesheet" href="resultstyle.css">-->
+    <style>
+    
+    @charset "UTF-8";
+/* css for publish results */
+.btn-danger {
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-card {
+    margin-top: 50px;
+}
+
+.form-card .card-header {
+    background-color: #4a12a5;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #4a12a5;
+}
+
+.form-control:focus {
+    border-color: #4a12a5;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-icon {
+    width: 30px;
+    height: 30px;
+}
+.navbar {
+    margin: 10px 10px 10px;
+    border-radius: 25px;
+    background: #4a12a5;
+    box-shadow: 5px;
+    border-bottom: none;
+ }
+ 
+ .navbar-nav .nav-item {
+    font-size: 1rem;
+    font-family: Roboto Condensed;
+    font-weight: 700;
+    margin-right: 20px;
+ }
+ 
+ .navbar-brand {
+    margin: 15px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+ }
+ 
+ .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+    position: relative;
+    padding-bottom: 5px;
+ }
+ 
+ .navbar-nav .nav-link:hover {
+    text-decoration: none;
+ }
+ 
+ .navbar-nav .nav-link::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+ }
+ 
+ .navbar-nav .nav-link:hover::before {
+    visibility: visible;
+    width: 100%;
+ }
+ 
+ .btn-outline-primary {
+    border: 2px;
+    border-radius: 50px;
+    text-align: center;
+    font-family: Roboto ;
+    font-weight: 500;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    border-color: rgb(255, 255, 255);
+ }
+ 
+ .btn-outline-primary:hover {
+    background-color: rgb(16, 16, 16);
+    color: #ffffff;
+    transition: 0.3s;
+ }
+
+ /* Custom CSS styles for View Exam Results */
+
+/* Table and buttons */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 2px solid #4a12a5;
+    font-family: 'Roboto',sans-serif;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    order: 2px solid #4a12a5
+}
+th{
+    background-color: #4a12a5;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9; 
+    cursor: pointer;
+}
+
+#searchInput {
+    margin-bottom: 10px;
+    background-color: #ece9f0;
+}
+
+.btn-secondary, .btn-primary, .btn-warning, .btn-danger {
+    margin-right: 10px;
+    background-color: #4a12a5;
+}
+
+
+/* Modal-specific styling */
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 2.5rem; 
+    color: #fdfdff; 
+    text-align: center;
+    margin-bottom: 20px; 
+    padding: 10px;
+    background-color: #4a12a5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    font-weight: bold; 
+}
+/* Action buttons inside table */
+td button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    color: white;
+    background-color: #28a745; /* Green color for action buttons */
+    transition: background-color 0.3s ease;
+}
+
+td button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Custom styles for the search input */
+ #searchInput {
+    width: 300px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 16px;
+} 
+
+ /* Make table responsive on small screens */
+@media (max-width: 768px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+} 
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">SmartExam</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <li class="nav-item active">
+              <a class="nav-link" href="admindashboard.jsp">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Exam Concerns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Create Exam</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="publishResults.jsp">Result Publishing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+            </li>
+          </ul>
+            <div>
+        <a href=studentprofile.jsp>
+          <button id="profileButton" class="btn btn-outline-primary mx-1">
+            <i class="fas fa-user"></i>
+          </button>
+          </a>
+        </div>
+        </div>
+     </nav>
+    
+    <div class="container">
+<c:if test="${not empty error}">
+    <div class="alert alert-danger">${error}</div>
+</c:if>
+
+        <!-- Card Component -->
+        <div class="card form-card">
+            <div class="card-header text-center">
+                <h2>Publish Exam Results</h2>
+            </div>
+            <div class="card-body">
+                <!-- Publish Results Form -->
+                <form id="publishForm" action="insertServlet" method="post" onsubmit="return validateStudentId();">
+
+                    <!-- Form Group for Student ID -->
+                    <div class="mb-3">
+                        <label for="studentId" class="form-label">Student ID</label>
+                        <input type="text" class="form-control" id="studentId" name="studentId" required>
+                         <div id="studentIdError" class="text-danger"></div> 
+                    </div>
+
+                    <!-- Form Group for Exam Name -->
+                    <div class="mb-3">
+                        <label for="examName" class="form-label">Exam Name</label>
+                        <input type="text" class="form-control" id="examName" name="examName" required>
+                    </div>
+                    <!-- Generated Exam ID -->
+                    <div class="mb-3">
+                        <label for="examId" class="form-label">Exam ID</label>
+                        <input type="text" class="form-control" id="examId" name="examId" readonly>
+                    </div>
+
+                    <!-- Form Group for Score -->
+                    <div class="mb-3">
+                        <label for="score" class="form-label">Score</label>
+                        <input type="number" class="form-control" id="score" name="score" required onchange="calculateGrade()">
+                         <div id="scoreError" class="text-danger"></div>
+                    </div>
+
+                    <!-- Auto-generated Grade -->
+                    <div class="mb-3">
+                        <label for="grade" class="form-label">Grade</label>
+                        <input type="text" class="form-control" id="grade" name="grade" readonly>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Publish Result</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Optional for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS (External file) -->
+    <script src="script.js"></script>
+</body>
+</html>

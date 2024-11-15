@@ -1,0 +1,49 @@
+//AddStudentServlet
+
+package com.Registration;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/AddStudentServlet")
+public class AddStudentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 String stName = request.getParameter("stName");
+		 String stEmail = request.getParameter("stEmail");
+		 String mobileNumber = request.getParameter("mobileNumber");
+		 String password = request.getParameter("password");
+		 
+		boolean isTrue;
+
+		 boolean emailExists = RegistrationControl.isEmailExists(stEmail);
+
+	        if (emailExists) {
+	            String alertMessage = "Email already registered!";
+	            response.getWriter().println("<script>alert('" + alertMessage + "');window.location.href = 'login.jsp';</script>");
+	        } else {
+	            isTrue = RegistrationControl.insertdata(stName, stEmail, mobileNumber, password);
+
+	            if (isTrue == true) {
+	                String alertMessage = "Registered Successfully";
+	                response.getWriter().println("<script>alert('" + alertMessage + "');window.location.href = 'login.jsp'</script>");
+	            } else {
+	                RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
+	                dis2.forward(request, response);
+	            }
+	        }
+		
+		
+		    
+	}
+	
+
+}                                                                                                                                                               

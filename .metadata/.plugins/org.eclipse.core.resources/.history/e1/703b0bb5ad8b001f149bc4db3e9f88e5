@@ -1,0 +1,94 @@
+//AddStudentServlet
+
+package Registration;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/AddStudentServlet")
+public class AddStudentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 String stName = request.getParameter("stName");
+		 String stEmail = request.getParameter("stEmail");
+		 String mobileNumber = request.getParameter("mobileNumber");
+		 String password = request.getParameter("password");
+		 
+		boolean isTrue;
+
+		 boolean emailExists = RegistrationControl.isEmailExists(stEmail);
+
+	        if (emailExists) {
+	            String alertMessage = "Email already registered!";
+	            response.getWriter().println("<script>alert('" + alertMessage + "');window.location.href = 'login.jsp';</script>");
+	        } else {
+	            isTrue = RegistrationControl.insertdata(stName, stEmail, mobileNumber, password);
+
+	            if (isTrue == true) {
+	                String alertMessage = "Registered Successfully";
+	                response.getWriter().println("\"<div id='custom-alert'>\" +\r\n"
+	                		+ "			        \"<span class='closebtn' onclick='closeAlert()'>&times;</span>\" +\r\n"
+	                		+ "			        \"<div class='alert-icon'>&#10004;</div>\" +\r\n"
+	                		+ "			        alertMessage +\r\n"
+	                		+ "			        \"</div>\" +\r\n"
+	                		+ "			        \"<script>\" +\r\n"
+	                		+ "			        \"function closeAlert() { document.getElementById('custom-alert').style.display = 'none'; }\" +\r\n"
+	                		+ "			        \"setTimeout(function() { window.location.href = 'login.jsp'; }, 1000);\" +  \r\n"
+	                		+ "			        \"</script>\" +\r\n"
+	                		+ "			        \"<style>\" +\r\n"
+	                		+ "			        \"#custom-alert {\" +\r\n"
+	                		+ "			        \"   padding: 40px;\" +\r\n"
+	                		+ "			        \"   background-color: #4CAF50;\" +  \r\n"
+	                		+ "			        \"   color: white;\" +\r\n"
+	                		+ "			        \"   position: fixed;\" +\r\n"
+	                		+ "			        \"   top: 50%;\" +\r\n"
+	                		+ "			        \"   left: 50%;\" +\r\n"
+	                		+ "			        \"   transform: translate(-50%, -50%);\" +  \r\n"
+	                		+ "			        \"   z-index: 9999;\" +\r\n"
+	                		+ "			        \"   font-family: 'Arial', sans-serif;\" +\r\n"
+	                		+ "			        \"   font-size: 24px;\" +  \r\n"
+	                		+ "			        \"   border-radius: 10px;\" +\r\n"
+	                		+ "			        \"   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);\" +  \r\n"
+	                		+ "			        \"   width: 400px;\" +  \r\n"
+	                		+ "			        \"   text-align: center;\" +\r\n"
+	                		+ "			        \"}\" +\r\n"
+	                		+ "			        \".alert-icon {\" +\r\n"
+	                		+ "			        \"   font-size: 48px;\" +  \r\n"
+	                		+ "			        \"   margin-bottom: 10px;\" +  \r\n"
+	                		+ "			        \"}\" +\r\n"
+	                		+ "			        \".alert-message {\" +\r\n"
+	                		+ "			        \"   font-size: 20px;\" +  \r\n"
+	                		+ "			        \"}\" +\r\n"
+	                		+ "			        \".closebtn {\" +\r\n"
+	                		+ "			        \"   position: absolute;\" +\r\n"
+	                		+ "			        \"   top: 10px;\" +\r\n"
+	                		+ "			        \"   right: 20px;\" +\r\n"
+	                		+ "			        \"   color: white;\" +\r\n"
+	                		+ "			        \"   font-weight: bold;\" +\r\n"
+	                		+ "			        \"   font-size: 28px;\" +\r\n"
+	                		+ "			        \"   cursor: pointer;\" +\r\n"
+	                		+ "			        \"}\" +\r\n"
+	                		+ "			        \".closebtn:hover {\" +\r\n"
+	                		+ "			        \"   color: black;\" +\r\n"
+	                		+ "			        \"}\"  +\r\n"
+	                		+ "			        \"</style>\"");
+	            } else {
+	                RequestDispatcher dis2 = request.getRequestDispatcher("wrong.jsp");
+	                dis2.forward(request, response);
+	            }
+	        }
+		
+		
+		    
+	}
+	
+
+}                                                                                                                                                               
